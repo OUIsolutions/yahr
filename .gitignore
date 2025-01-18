@@ -6,7 +6,7 @@
 *.ko
 *.obj
 *.elf
-
+darwin.c
 # Linker output
 *.ilk
 *.map
