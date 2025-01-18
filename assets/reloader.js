@@ -1,3 +1,7 @@
 
+let yahl_first_sha = null
 
-alert("aaa")
+setInterval(function(){
+    
+},YAHL_DELAY)
+
