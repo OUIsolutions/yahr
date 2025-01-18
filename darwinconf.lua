@@ -32,7 +32,7 @@ if is_argv_present("--install_dependencies_direct")  then
 end 
 
 if is_argv_present("--build_code") then
-    darwin.c_include("../dependencies/serjao_berranteiro/SerjaoBerranteiroServer-3/src/main.c")
+    darwin.c_include("../dependencies/serjao_berranteiro/src/main.c")
     darwin.add_lua_file("server.lua")
     darwin.generate_c_executable_output({ output_name = "release/yahr.c" })
 end
