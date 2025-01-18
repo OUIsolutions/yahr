@@ -34,6 +34,10 @@ end
 if is_argv_present("--compile_linux") or is_argv_present("--compile_windows_direct") then
     darwin.add_c_code('#include "../dependencies/serjao_berranteiro/src/main.c"\n')
     darwin.add_c_code('#include "../dependencies/LuaCEmbed.h"\n')
+    darwin.add_c_code('#include "../dependencies/LuaDoTheWorld/src/one.c"\n')
+    darwin.load_lualib_from_c("serjao_berranteiro_start_point","serjao")
+    darwin.load_lualib_from_c("load_luaDoTheWorld", "dtw")
+
     local CONCAT_PATH = true 
     local src = dtw.list_files_recursively("src",CONCAT_PATH)
     for i=1,#src do
@@ -57,3 +61,6 @@ if is_argv_present("--compile_windows_direct") then
     os.execute("i686-w64-mingw32-gcc -o release/yahr.exe release/yahr.c -lws2_32")
 end
 
+if is_argv_present("--test") then
+    os.execute("./release/yahr.out")
+end
