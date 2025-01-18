@@ -1,12 +1,7 @@
 
 
 local function main_server(server)
-  local content = dtw.load_file(server.route)  
-  if not content then
-    
-    return serjao.send_raw(ASSETS["not_found.html"],"application/html",404)
-  end 
-  
+
   if server.route == "/get_asset" then
     local assset_name = server.get_param("asset")
     if not assset_name  then 
@@ -20,6 +15,11 @@ local function main_server(server)
     return serjao.send_raw(current_asset,assset_content_type,200)
   end 
 
+  local content = dtw.load_file(server.route)  
+  if not content then
+    print(ASSETS)
+    return serjao.send_raw(ASSETS["not_found.html"],"application/html",404)
+  end 
   
 
 
