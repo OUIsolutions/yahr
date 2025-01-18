@@ -22,6 +22,6 @@ and you can just start with:
 ./yahr.out
 ```
 ###  References
-##### [Arg Flags](/docs/argv_flags.md)
-##### [Build](/docs/build.md)
-##### [Comptime Explanation](/docs/comptime_explanation.md)
+<b> [Arg Flags](/docs/argv_flags.md)</b>
+<b> [Build](/docs/build.md)</b>
+<b> [Comptime Explanation](/docs/comptime_explanation.md) </b>
