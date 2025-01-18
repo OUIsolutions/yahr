@@ -1,8 +1,8 @@
 
 
-function is_argv_present()
+function is_argv_present(tested_arg)
     for i, v in ipairs(arg) do
-        if v == arg then
+        if v == tested_arg then
             return true
         end
     end
