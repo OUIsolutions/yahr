@@ -21,13 +21,13 @@ if is_argv_present("--create_docker_images") then
     os.execute("docker build -t debian_yahr -f images/debian.Dockerfile .")
 end
 if is_argv_present("--install_dependencies") then
-    os.execute('docker run --rm --volume "$(pwd):/app:z" debian_yahr bash -c "cd /app && darwin build darwinconf.lua --install_dependencies_direct"')
+    os.execute('docker run --rm --volume "$(pwd):/app:z" debian_yahr sh -c "cd /app && darwin build darwinconf.lua --install_dependencies_direct"')
 end
 
 
 if is_argv_present("--install_dependencies_direct")  then
     download_zip_from_git("https://github.com/OUIsolutions/LuaDoTheWorld/archive/fd4be9a74f5ba1190c4b7195c111bc18cb3f24c3.zip","LuaDoTheWorld")
-    download_zip_from_git("https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer/archive/b46715ef0f19ac90ff72410439330cfb74dde929.zip","serjao_berranteiro")
+    download_zip_from_git("https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer/archive/3274cdcf7ee2b9035b2d685f83b0082e224be890.zip","serjao_berranteiro")
 
 end 
 
@@ -37,12 +37,16 @@ if is_argv_present("--build_code") then
     darwin.generate_c_executable_output({ output_name = "release/yahr.c" })
 end
 
-
+if is_argv_present("--compile_linux") then 
+    os.execute('docker run --rm --volume "$(pwd):/app:z" alpine_yahr sh -c "cd /app && darwin build darwinconf.lua --compile_linux_direct"')
+end
 if is_argv_present("--compile_linux_direct") then 
     os.execute("gcc -o  release/yahr --static release/yahr.c ")
 end
 
-
+if is_argv_present("--compile_windows") then 
+    os.execute('docker run --rm --volume "$(pwd):/app:z" debian_yahr sh -c "cd /app && darwin build darwinconf.lua --compile_windows_direct"')
+end
 if is_argv_present("--compile_windows_direct") then 
     os.execute("x86_64-w64-mingw32-gcc -o release/yahr.exe release/yahr.c ")
 end
