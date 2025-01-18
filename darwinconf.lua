@@ -31,7 +31,7 @@ if is_argv_present("--install_dependencies_direct")  then
     os.execute("curl -L https://github.com/OUIsolutions/LuaCEmbed/releases/download/v0.780/LuaCEmbed.h -o dependencies/LuaCEmbed.h")
 end 
 
-if is_argv_present("--build_code") then
+if is_argv_present("--compile_linux") or is_argv_present("--compile_windows_direct") then
     darwin.add_c_code('#include "../dependencies/serjao_berranteiro/src/main.c"\n')
     darwin.add_c_code('#include "../dependencies/LuaCEmbed.h"\n')
     local CONCAT_PATH = true 
