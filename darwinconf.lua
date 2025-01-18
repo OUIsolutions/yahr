@@ -34,7 +34,12 @@ end
 if is_argv_present("--build_code") then
     darwin.add_c_code('#include "../dependencies/serjao_berranteiro/src/main.c"\n')
     darwin.add_c_code('#include "../dependencies/LuaCEmbed.h"\n')
-    darwin.add_lua_file("server.lua")
+    local CONCAT_PATH = true 
+    local src = dtw.list_files_recursively("src",CONCAT_PATH)
+    for i=1,#src do
+        darwin.add_lua_file(src[i])
+    end
+    darwin.add_lua_code("main()")
     darwin.generate_c_executable_output({ output_name = "release/yahr.c" ,include_lua_cembed=false })
 end
 
@@ -42,13 +47,13 @@ if is_argv_present("--compile_linux") then
     os.execute('docker run --rm --volume "$(pwd):/app:z" alpine_yahr sh -c "cd /app && darwin build darwinconf.lua --compile_linux_direct"')
 end
 if is_argv_present("--compile_linux_direct") then 
-    os.execute("gcc -o  release/yahr --static release/yahr.c ")
+    os.execute("gcc -o  release/yahr.out --static release/yahr.c ")
 end
 
 if is_argv_present("--compile_windows") then 
-    os.execute('docker run --rm --volume "$(pwd):/app:z" debian_yahr sh -c "cd /app && darwin build darwinconf.lua --compile_windows_direct"')
+    os.execute('docker run --rm --volume "$(pwd):/app:z" debian_yahr sh -c "cd /app && darwin build darwinconf.lua --compile_windows_direct "')
 end
 if is_argv_present("--compile_windows_direct") then 
-    os.execute("i686-w64-mingw32-gcc  -o release/yahr.exe release/yahr.c ")
+    os.execute("i686-w64-mingw32-gcc   -o release/yahr.exe release/yahr.c -lws2_32")
 end
 
