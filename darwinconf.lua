@@ -51,7 +51,7 @@ if is_argv_present("--compile_linux") or is_argv_present("--compile_windows_dire
     for  i=1,#assets_content do
         assets[assets_content[i]] = dtw.load_file(assets_content[i])
     end 
-    darwin.embed_global("assets",assets)
+    darwin.embed_global("ASSETS",assets)
 
     darwin.add_lua_code("main()")
     darwin.generate_c_executable_output({ output_name = "release/yahr.c" ,include_lua_cembed=false })
