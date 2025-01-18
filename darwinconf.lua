@@ -27,7 +27,7 @@ end
 
 if is_argv_present("--install_dependencies_direct")  then
     download_zip_from_git("https://github.com/OUIsolutions/LuaDoTheWorld/archive/fd4be9a74f5ba1190c4b7195c111bc18cb3f24c3.zip","LuaDoTheWorld")
-    download_zip_from_git("https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer/archive/3274cdcf7ee2b9035b2d685f83b0082e224be890.zip","serjao_berranteiro")
+    download_zip_from_git("https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer/archive/577fd98dcf2c150f8411e27c58824c89293d0284.zip","serjao_berranteiro")
     os.execute("curl -L https://github.com/OUIsolutions/LuaCEmbed/releases/download/v0.780/LuaCEmbed.h -o dependencies/LuaCEmbed.h")
 end 
 
@@ -49,6 +49,6 @@ if is_argv_present("--compile_windows") then
     os.execute('docker run --rm --volume "$(pwd):/app:z" debian_yahr sh -c "cd /app && darwin build darwinconf.lua --compile_windows_direct"')
 end
 if is_argv_present("--compile_windows_direct") then 
-    os.execute("x86_64-w64-mingw32-gcc -o release/yahr.exe release/yahr.c ")
+    os.execute("i686-w64-mingw32-gcc  -o release/yahr.exe release/yahr.c ")
 end
 
