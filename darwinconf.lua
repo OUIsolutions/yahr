@@ -44,7 +44,7 @@ if is_argv_present("--install_dependencies_direct") then
 end
 
 if is_argv_present("--compile_linux") or is_argv_present("--compile_windows_direct") then
-    darwin.add_c_file('dependencies/serjao_berranteiro/src/main.c', true)
+     darwin.add_c_file('dependencies/serjao_berranteiro/src/main.c', true)
 
 
     darwin.add_c_file('dependencies/LuaDoTheWorld/src/one.c', true, function(import)
