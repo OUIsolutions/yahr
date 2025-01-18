@@ -38,11 +38,14 @@ local function main_server(server)
         return serjao.send_text(hasher.get_value(), 200)
     end
 
-
-    local content = dtw.load_file(server.route)
+    local file = server.route
+    local content = dtw.load_file(file)
     if not content then
         return serjao.send_raw(ASSETS["not_found.html"], "text/html", 404)
     end
+    local content_type = get_content_type(file)
+    
+    
 
 
 
