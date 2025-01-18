@@ -6,7 +6,16 @@ function is_argv_present(tested_arg)
     end
     return false
 end
-
+function download_zip_from_git(url,dest_name)
+    os.execute("mkdir -p buffer")
+    os.execute("curl -L " .. url .." -o buffer/output.zip") 
+    os.execute("unzip buffer/output.zip -d buffer")    
+    dtw.remove_any("buffer/output.zip")
+    local buffer = dtw.list_all("buffer",true)[1]
+    dtw.move_any_overwriting(buffer,"dependencies/"..dest_name)
+    dtw.remove_any("buffer")
+    
+end 
 if is_argv_present("--create_docker_images") then
     os.execute("docker build -t alpine_yahr -f images/alpine.Dockerfile .")
     os.execute("docker build -t debian_yahr -f images/debian.Dockerfile .")
@@ -15,15 +24,11 @@ if is_argv_present("--install_dependencies") then
     os.execute('docker run --rm --volume "$(pwd):/app:z" debian_yahr bash -c "cd /app && darwin build darwinconf.lua --install_dependencies_direct"')
 end
 
+
 if is_argv_present("--install_dependencies_direct")  then
     --enter into the docker container and mount the following dir
-    dtw.remove_any("dependencies")
-    os.execute("mkdir -p dependencies")
-    os.execute("cd dependencies")
-    os.execute("git clone  https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer.git")
-    os.execute("curl -L https://github.com/OUIsolutions/LuaDoTheWorld/archive/refs/tags/0.74.zip -o 0.74.zip")
-    os.execute("unzip 0.74.zip -d lua_do_the_world")
-    os.execute("cd ..")
+    download_zip_from_git("https://github.com/OUIsolutions/LuaDoTheWorld/archive/fd4be9a74f5ba1190c4b7195c111bc18cb3f24c3.zip","LuaDoTheWorld")
+    --checkout the correct version
 end 
 
 if is_argv_present("--build_code") then
