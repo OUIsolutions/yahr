@@ -27,7 +27,7 @@ Usage: yahl [OPTIONS]
 Options:
   --p, --plotage <path>      Specify the directory or file for the plotage.
                             If not provided, a default path (.) will be used.
-  --digest_mode <mode>      Set the digest mode for SHA behavior.
+  --diggest_mode <mode>      Set the digest mode for SHA behavior.
                             Options: "content" or "time".
                             - "time" will digest based on the modification time of the file or directory.
                             - "content" will digest based on the content.
