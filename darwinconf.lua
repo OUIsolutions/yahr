@@ -28,13 +28,14 @@ end
 if is_argv_present("--install_dependencies_direct")  then
     download_zip_from_git("https://github.com/OUIsolutions/LuaDoTheWorld/archive/fd4be9a74f5ba1190c4b7195c111bc18cb3f24c3.zip","LuaDoTheWorld")
     download_zip_from_git("https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer/archive/3274cdcf7ee2b9035b2d685f83b0082e224be890.zip","serjao_berranteiro")
-
+    os.execute("curl -L https://github.com/OUIsolutions/LuaCEmbed/releases/download/v0.780/LuaCEmbed.h -o dependencies/LuaCEmbed.h")
 end 
 
 if is_argv_present("--build_code") then
-    darwin.c_include("../dependencies/serjao_berranteiro/src/main.c")
+    darwin.add_c_code('#include "../dependencies/serjao_berranteiro/src/main.c"\n')
+    darwin.add_c_code('#include "../dependencies/LuaCEmbed.h"\n')
     darwin.add_lua_file("server.lua")
-    darwin.generate_c_executable_output({ output_name = "release/yahr.c" })
+    darwin.generate_c_executable_output({ output_name = "release/yahr.c" ,include_lua_cembed=false })
 end
 
 if is_argv_present("--compile_linux") then 
