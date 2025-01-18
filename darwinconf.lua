@@ -17,11 +17,11 @@ function download_zip_from_git(url, dest_name)
     dtw.remove_any("buffer")
 end
 
-if is_argv_present("--create_docker_images") then
+if is_argv_present("--create_from_docker_images") then
     os.execute("docker build -t alpine_yahr -f images/alpine.Dockerfile .")
     os.execute("docker build -t debian_yahr -f images/debian.Dockerfile .")
 end
-if is_argv_present("--install_dependencies_docker") then
+if is_argv_present("--install_dependencies_from_docker") then
     os.execute(
         'docker run --rm --volume "$(pwd):/app:z" debian_yahr sh -c "cd /app && darwin build darwinconf.lua --install_dependencies"')
 end
@@ -81,7 +81,7 @@ if is_argv_present("--compile_linux") or is_argv_present("--compile_windows") th
     darwin.generate_c_executable_output({ output_name = "release/yahr.c", include_lua_cembed = false })
 end
 
-if is_argv_present("--compile_linux_docker") then
+if is_argv_present("--compile_linux_from_docker") then
     os.execute(
         'docker run --rm --volume "$(pwd):/app:z" alpine_yahr sh -c "cd /app && darwin build darwinconf.lua --compile_linux"')
 end
@@ -89,7 +89,7 @@ if is_argv_present("--compile_linux") then
     os.execute("gcc -o  release/yahr.out --static release/yahr.c ")
 end
 
-if is_argv_present("--compile_windows_docker") then
+if is_argv_present("--compile_windows_from_docker") then
     os.execute(
         'docker run --rm --volume "$(pwd):/app:z" debian_yahr sh -c "cd /app && darwin build darwinconf.lua --compile_windows "')
 end

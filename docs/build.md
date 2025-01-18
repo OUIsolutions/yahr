@@ -13,4 +13,10 @@ gcc yahr.c -o yahr.out
 ```
 
 ## Build From Docker
-if you want to build the project fromdocke
+if you want to build the project from docker , you need to have docker  and darwin installed in your machine
+then , clone the repo into your machine and run
+```shell
+ darwin build   darwinconf.lua --create_from_docker_images --install_dependencies_from_docker --compile_linux_from_docker --compile_windows_from_docker 
+```
+## Build Local
+if you want to build local you will need to have gcc,
