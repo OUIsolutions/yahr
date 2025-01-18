@@ -1,6 +1,6 @@
 plotage_area = {}
 diggest_mode = "time"
-delay  = 1000
+delay        = 100
 
 
 
@@ -17,7 +17,7 @@ function main()
         end
     end
 
-    if argv.flags_exist({ "diggest_mode", "d" }) then
+    if argv.flags_exist({ "diggest_mode" }) then
         local digest_mode_flags = argv.get_flag_args({ "diggest_mode" })
         if #digest_mode_flags == 0 then
             error("diggest flag cannot be empty")
@@ -28,17 +28,16 @@ function main()
             error("invalid diggest mode ,type --help for more information")
         end
     end
-    if argv.flags_exist({"delay","d"})then
-        local delay_flags = argv.get_flag_args({"delay","d"})
+    if argv.flags_exist({ "delay", "d" }) then
+        local delay_flags = argv.get_flag_args({ "delay", "d" })
         if #delay_flags == 0 then
             error("delay cannot be empty")
-        end 
-        delay =  tonumber(delay_flags[1])
+        end
+        delay = tonumber(delay_flags[1])
         if not delay then
             error("delay must be a number")
-        end 
-        
-    end 
+        end
+    end
 
     serjao.server(3000, 5000, main_server)
 end

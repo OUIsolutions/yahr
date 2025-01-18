@@ -90,5 +90,5 @@ if is_argv_present("--compile_windows_direct") then
 end
 
 if is_argv_present("--test") then
-    os.execute("./release/yahr.out")
+    os.execute("./release/yahr.out --delay 1000")
 end

@@ -15,10 +15,15 @@ function main_server(server)
         if not assset_name then
             return serjao.send_text("asset not provided", 404)
         end
+
         local current_asset = ASSETS[assset_name]
         if not current_asset then
             return serjao.send_text("asset not found ", 404)
         end
+        if assset_name == "reloader.js" then
+            current_asset = string.gsub(current_asset, "YAHL_DELAY", delay)
+        end
+
         local assset_content_type = get_content_type(assset_name)
         return serjao.send_raw(current_asset, assset_content_type, 200)
     end
