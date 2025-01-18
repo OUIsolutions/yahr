@@ -21,3 +21,12 @@ and you can just start with:
 ```shell 
 ./yahr.out
 ```
+## References
+### [Arg Flags](/docs/argv_flags.md)
+Argv flags usage
+
+### [Build](/docs/build.md)
+Build Instructions 
+
+### [Comptime Explanation](/docs/comptime_explanation.md)
+Explanation  of how the **darwin** comptime system works into the project
