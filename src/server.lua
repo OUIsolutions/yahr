@@ -67,6 +67,10 @@ function main_server(server)
         if possible_body_replace then
             return serjao.send_raw(possible_body_replace, "text/html", 200)
         end
+        local possible_html_replace = insert_js_included_if_match(content, "<html>")
+        if possible_html_replace then
+            return serjao.send_raw(possible_html_replace, "text/html", 200)
+        end
     end
 
 
