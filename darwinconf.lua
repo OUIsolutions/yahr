@@ -26,9 +26,9 @@ end
 
 
 if is_argv_present("--install_dependencies_direct")  then
-    --enter into the docker container and mount the following dir
     download_zip_from_git("https://github.com/OUIsolutions/LuaDoTheWorld/archive/fd4be9a74f5ba1190c4b7195c111bc18cb3f24c3.zip","LuaDoTheWorld")
-    --checkout the correct version
+    download_zip_from_git("https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer/archive/b46715ef0f19ac90ff72410439330cfb74dde929.zip","serjao_berranteiro")
+
 end 
 
 if is_argv_present("--build_code") then
