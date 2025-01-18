@@ -44,9 +44,17 @@ if is_argv_present("--install_dependencies_direct") then
 end
 
 if is_argv_present("--compile_linux") or is_argv_present("--compile_windows_direct") then
-    darwin.add_c_code('#include "../dependencies/serjao_berranteiro/src/main.c"\n')
-    darwin.add_c_code('#include "../dependencies/LuaCEmbed.h"\n')
-    darwin.add_c_code('#include "../dependencies/LuaDoTheWorld/src/one.c"\n')
+    darwin.add_c_file('dependencies/serjao_berranteiro/src/main.c', true)
+
+
+    darwin.add_c_file('dependencies/LuaDoTheWorld/src/one.c', true, function(import)
+        if import == "../dependencies/dependency.LuaCEmbed.h" then
+            return false
+        end
+        return true
+    end)
+
+
     darwin.load_lualib_from_c("serjao_berranteiro_start_point", "serjao")
     darwin.load_lualib_from_c("load_luaDoTheWorld", "dtw")
 
