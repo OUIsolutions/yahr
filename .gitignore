@@ -1,6 +1,7 @@
 # Prerequisites
 *.d
 dependencies
+release
 # Object files
 *.o
 *.ko
