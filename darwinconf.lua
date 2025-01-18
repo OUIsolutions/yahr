@@ -7,8 +7,16 @@ function is_argv_present(tested_arg)
     return false
 end
 
+if is_argv_present("--create_docker_images") then
+    os.execute("docker build -t alpine_yahr -f images/alpine.Dockerfile .")
+    os.execute("docker build -t debian_yahr -f images/debian.Dockerfile .")
+end
+if is_argv_present("--install_dependencies") then
+    os.execute('docker run --rm --volume "$(pwd):/app:z" debian_yahr bash -c "cd /app && darwin build darwinconf.lua --install_dependencies_direct"')
+end
 
-if is_argv_present("--install_dependencies")  then
+if is_argv_present("--install_dependencies_direct")  then
+    --enter into the docker container and mount the following dir
     dtw.remove_any("dependencies")
     os.execute("mkdir -p dependencies")
     os.execute("cd dependencies")
@@ -18,18 +26,19 @@ if is_argv_present("--install_dependencies")  then
     os.execute("cd ..")
 end 
 
+if is_argv_present("--build_code") then
+    darwin.c_include("../dependencies/serjao_berranteiro/SerjaoBerranteiroServer-3/src/main.c")
+    darwin.add_lua_file("server.lua")
+    darwin.generate_c_executable_output({ output_name = "release/yahr.c" })
+end
 
-darwin.c_include("../dependencies/serjao_berranteiro/SerjaoBerranteiroServer-3/src/main.c")
-darwin.add_lua_file("server.lua")
-darwin.generate_c_executable_output({ output_name = "release/yahr.c" })
 
-
-if is_argv_present("--compile_linux") then 
+if is_argv_present("--compile_linux_direct") then 
     os.execute("gcc -o  release/yahr --static release/yahr.c ")
 end
 
 
-if is_argv_present("--compile_windows") then 
+if is_argv_present("--compile_windows_direct") then 
     os.execute("x86_64-w64-mingw32-gcc -o release/yahr.exe release/yahr.c ")
 end
 
