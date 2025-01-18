@@ -54,6 +54,6 @@ if is_argv_present("--compile_windows") then
     os.execute('docker run --rm --volume "$(pwd):/app:z" debian_yahr sh -c "cd /app && darwin build darwinconf.lua --compile_windows_direct "')
 end
 if is_argv_present("--compile_windows_direct") then 
-    os.execute("x86_64-w64-mingw32-gcc   -o release/yahr.exe release/yahr.c -lws2_32")
+    os.execute("i686-w64-mingw32-gcc -o release/yahr.exe release/yahr.c -lws2_32")
 end
 
