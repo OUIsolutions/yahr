@@ -21,7 +21,7 @@ if is_argv_present("--install_dependencies")  then
     os.execute("unzip dependencies/0.74.zip -d dependencies/lua_do_the_world")
 end 
 
---darwin.add_c_file("dependencies/serjao_berranteiro/src/main.c")
+darwin.c_include("../dependencies/serjao_berranteiro/SerjaoBerranteiroServer-3/src/main.c")
 
 local all = dtw.list_files_recursively("src",true)
 for i=1,#all do
