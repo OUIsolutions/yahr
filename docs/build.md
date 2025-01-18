@@ -13,10 +13,15 @@ gcc yahr.c -o yahr.out
 ```
 
 ## Build From Docker
-if you want to build the project from docker , you need to have docker  and darwin installed in your machine
+if you want to build the project from docker , you need to have docker  and [Darwin](https://github.com/OUIsolutions/Darwin/tree/0.015)   installed in your machine
 then , clone the repo into your machine and run
 ```shell
  darwin build   darwinconf.lua --create_from_docker_images --install_dependencies_from_docker --compile_linux_from_docker --compile_windows_from_docker 
 ```
 ## Build Local
-if you want to build local you will need to have gcc,
+if you want to build local you will need to have [Darwin](https://github.com/OUIsolutions/Darwin/tree/0.015), **gcc**,**i686-w64-mingw32-gcc**,**unzip** and **curl** installed in your machine,then you can run 
+
+```shell 
+ darwin build   darwinconf.lua  --install_dependencies --compile_linux --compile_windows 
+```
+
