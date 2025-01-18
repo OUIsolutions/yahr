@@ -7,7 +7,7 @@ delay        = 100
 function main()
     plotage_area = argv.get_flag_args({ "plotage", "p" })
     if #plotage_area == 0 then
-        plotage_area = { dtw.get_absolute_path() }
+        plotage_area = { dtw.get_absolute_path(".") }
     end
     for i = 1, #arg do
         local possible_arg = arg[i]
