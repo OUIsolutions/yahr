@@ -40,6 +40,8 @@ and you can just start with:
 |[Sha-256](https://github.com/amosnier/sha-2)|
 
 ### Main Comptime Dependencies (only required to build)
+| Project  |
+|-------        |
 |[Docker](https://www.docker.com/)|
 |[Darwin](https://github.com/OUIsolutions/Darwin)|
 |[Curl](https://curl.se/)|
