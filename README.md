@@ -21,7 +21,7 @@ and you can just start with:
 ```shell 
 ./yahr.out
 ```
-## References
-### [Arg Flags](/docs/argv_flags.md)
-#### [Build](/docs/build.md)
-#### [Comptime Explanation](/docs/comptime_explanation.md)
+###  References
+##### [Arg Flags](/docs/argv_flags.md)
+##### [Build](/docs/build.md)
+##### [Comptime Explanation](/docs/comptime_explanation.md)
