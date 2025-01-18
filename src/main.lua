@@ -1,5 +1,5 @@
 plotage_area = {}
-diggest_mode = "content"
+diggest_mode = "time"
 
 ---@param server
 local function main_server(server)
@@ -16,22 +16,28 @@ local function main_server(server)
         return serjao.send_raw(current_asset, assset_content_type, 200)
     end
 
+
     if server.route == "/get_folder_sha" then
         local hasher = dtw.newHasher()
         for i = 1, #plotage_area do
             local current = plotage_area[i]
-
-
             if dtw.isfile(current) then
                 hasher.digest_file(current)
             end
+            local is_dir = dtw.isdir(current)
 
-            if dtw.isdir(current) then
+            if is_dir and diggest_mode == "content" then
                 hasher.digest_folder_by_content(current)
+            end
+
+
+            if is_dir and diggest_mode == "time" then
+                hasher.digest_folder_by_last_modification(current)
             end
         end
         return serjao.send_text(hasher.get_value(), 200)
     end
+
 
     local content = dtw.load_file(server.route)
     if not content then
@@ -49,8 +55,6 @@ function main()
     if #plotage_area == 0 then
         plotage_area = { "." }
     end
-
-
     for i = 1, #arg do
         local possible_arg = arg[i]
         if possible_arg == "help" or possible_arg == "--help" then

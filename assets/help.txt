@@ -29,8 +29,9 @@ Options:
                             If not provided, a default path (.) will be used.
   --digest_mode <mode>      Set the digest mode for SHA behavior.
                             Options: "content" or "time".
-                            - "content" will digest based on the content.
                             - "time" will digest based on the modification time of the file or directory.
+                            - "content" will digest based on the content.
+
 
 Example:
   yahl -p /path/to/plotage --digest_mode content
