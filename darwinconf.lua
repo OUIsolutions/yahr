@@ -1,5 +1,3 @@
-
-
 function is_argv_present(tested_arg)
     for i, v in ipairs(arg) do
         if v == tested_arg then
