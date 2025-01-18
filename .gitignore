@@ -8,6 +8,7 @@ types
 *.ko
 *.obj
 *.elf
+teste.html
 darwin.c
 # Linker output
 *.ilk
