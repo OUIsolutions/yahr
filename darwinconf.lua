@@ -25,12 +25,7 @@ if is_argv_present("--install_dependencies")  then
 end 
 
 darwin.c_include("../dependencies/serjao_berranteiro/SerjaoBerranteiroServer-3/src/main.c")
-
-local all = dtw.list_files_recursively("src",true)
-for i=1,#all do
-    darwin.add_lua_file(all[i])
-end 
-darwin.add_lua_code("main()")
+darwin.add_lua_file("server.lua")
 darwin.generate_c_executable_output({ output_name = "release/yahr.c" })
 
 if is_argv_present("--compile_linux") then 
