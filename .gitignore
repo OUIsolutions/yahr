@@ -2,6 +2,7 @@
 *.d
 dependencies
 release
+types
 # Object files
 *.o
 *.ko

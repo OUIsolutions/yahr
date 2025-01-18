@@ -29,6 +29,8 @@ if is_argv_present("--install_dependencies_direct")  then
     download_zip_from_git("https://github.com/OUIsolutions/LuaDoTheWorld/archive/fd4be9a74f5ba1190c4b7195c111bc18cb3f24c3.zip","LuaDoTheWorld")
     download_zip_from_git("https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer/archive/577fd98dcf2c150f8411e27c58824c89293d0284.zip","serjao_berranteiro")
     os.execute("curl -L https://github.com/OUIsolutions/LuaCEmbed/releases/download/v0.780/LuaCEmbed.h -o dependencies/LuaCEmbed.h")
+    dtw.copy_any_overwriting("dependencies/serjao_berranteiro/serjao_berranteiro/serjao_berranteiro.lua","types/serjao_berranteiro.lua")
+    dtw.copy_any_overwriting("dependencies/LuaDoTheWorld/luaDoTheWorld/luaDoTheWorld.lua","types/luaDoTheWorld.lua")
 end 
 
 if is_argv_present("--compile_linux") or is_argv_present("--compile_windows_direct") then
@@ -43,6 +45,14 @@ if is_argv_present("--compile_linux") or is_argv_present("--compile_windows_dire
     for i=1,#src do
         darwin.add_lua_file(src[i])
     end
+
+    local assets = {}
+    local assets_content = dtw.list_files_recursively("assets",CONCAT_PATH)
+    for  i=1,#assets_content do
+        assets[assets_content[i]] = dtw.load_file(assets_content[i])
+    end 
+    darwin.embed_global("assets",assets)
+
     darwin.add_lua_code("main()")
     darwin.generate_c_executable_output({ output_name = "release/yahr.c" ,include_lua_cembed=false })
 end
