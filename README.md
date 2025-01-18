@@ -22,7 +22,6 @@ and you can just start with:
 ./yahr.out
 ```
 ###  References
-| item          |
 |-------        |
 |[Arg Flags](/docs/argv_flags.md)|
 | [Build](/docs/build.md)|
