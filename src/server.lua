@@ -50,7 +50,8 @@ function main_server(server)
         return serjao.send_text(hasher.get_value(), 200)
     end
 
-    local file = dtw.get_absolute_path(".") .. server.route
+    local file = dtw.concat_path(dtw.get_absolute_path("."), server.route)
+
     local content = dtw.load_file(file)
     if not content then
         return serjao.send_raw(ASSETS["not_found.html"], "text/html", 404)

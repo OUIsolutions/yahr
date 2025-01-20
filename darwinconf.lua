@@ -29,7 +29,7 @@ end
 
 if is_argv_present("--install_dependencies") then
     download_zip_from_git(
-        "https://github.com/OUIsolutions/LuaDoTheWorld/archive/fd4be9a74f5ba1190c4b7195c111bc18cb3f24c3.zip",
+        "https://github.com/OUIsolutions/LuaDoTheWorld/archive/8509a19fb3012c9d03fc3826cb003473e1e616ee.zip",
         "LuaDoTheWorld")
     download_zip_from_git(
         "https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer/archive/577fd98dcf2c150f8411e27c58824c89293d0284.zip",
