@@ -53,8 +53,11 @@ function main_server(server)
     local file = dtw.concat_path(dtw.get_absolute_path("."), server.route)
     local content = dtw.load_file(file)
     if not content then
+        print("content of("..file..")not located")
         return serjao.send_raw(ASSETS["not_found.html"], "text/html", 404)
     end
+    print("retriving:"..file)
+
     local content_type = get_content_type(file)
     if content_type == "text/html" then
         local possible_head_replace = insert_js_included_if_match(content, "<head>")
