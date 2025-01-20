@@ -51,7 +51,7 @@ function main_server(server)
     end
 
     local file = dtw.concat_path(dtw.get_absolute_path("."), server.route)
-
+    print(file)
     local content = dtw.load_file(file)
     if not content then
         return serjao.send_raw(ASSETS["not_found.html"], "text/html", 404)
