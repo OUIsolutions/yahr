@@ -31,17 +31,17 @@ and you can just start with:
 
 
 ### Main Runtime Dependencies 
-| Project  |
-|-------        |
-|[Lua](https://lua.org/)|
-|[Serjao Berranteiro](https://serjaoberranteiroserver.com.br/)|
-|[LuaCEmbed](https://github.com/OUIsolutions/LuaCEmbed)|
-|[LuaDoTheWorld](https://github.com/OUIsolutions/LuaDoTheWorld)|
-|[Sha-256](https://github.com/amosnier/sha-2)|
+| Project  | Used for |
+|-------        |  -------|
+|[Lua](https://lua.org/)| Scripting|
+|[Serjao Berranteiro](https://serjaoberranteiroserver.com.br/)| Server|
+|[LuaCEmbed](https://github.com/OUIsolutions/LuaCEmbed)| Embed Lua in C|
+|[LuaDoTheWorld](https://github.com/OUIsolutions/LuaDoTheWorld)| Manipulate files|
+|[Sha-256](https://github.com/amosnier/sha-2)|  Hashing|
 
 ### Main Comptime Dependencies (only required to build)
-| Project  |
-|-------        |
-|[Docker](https://www.docker.com/)|
-|[Darwin](https://github.com/OUIsolutions/Darwin)|
-|[Curl](https://curl.se/)|
+| Project  |   Used for |
+|-------        |   -------|
+|[Docker](https://www.docker.com/)| Build|
+|[Darwin](https://github.com/OUIsolutions/Darwin)| Build|
+|[Curl](https://curl.se/)|  Download|
