@@ -22,12 +22,12 @@ and you can just start with:
 ./yahr.out
 ```
 ###  Docs
-| File |
-|-------        |
-|[Arg Flags](/docs/argv_flags.md)|
-| [Build](/docs/build.md)|
-| [Comptime Explanation](/docs/comptime_explanation.md)|
-| [Dependencies](/docs/dependencies.md)|
+| File | Decsription |
+|-------        |   -------|
+|[Arg Flags](/docs/argv_flags.md)| How to use the flags|
+| [Build](/docs/build.md)|  How to build|
+| [Comptime Explanation](/docs/comptime_explanation.md)|  Comptime explanation|
+| [licenses](/docs/licenses.md)|    Licenses|
 
 
 ### Main Runtime Dependencies 
