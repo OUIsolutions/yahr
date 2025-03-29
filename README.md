@@ -7,9 +7,9 @@ with a single command
 ## Releases
 | item          | plataform |
 |-------        |-----------|
-| [Amalgamation](https://github.com/OUIsolutions/yahr/releases/download/0.0.2/yahr.c)| Source  |
-| [yahr.out](https://github.com/OUIsolutions/yahr/releases/download/0.0.2/yahr.out)|Linux binary|
-| [yahr.exe](https://github.com/OUIsolutions/yahr/releases/download/0.0.2/yahr.exe)|Windows binary |
+| [Amalgamation](https://github.com/OUIsolutions/yahr/releases/download/0.0.3/yahr.c)| Source  |
+| [yahr.out](https://github.com/OUIsolutions/yahr/releases/download/0.0.3/yahr.out)|Linux binary|
+| [yahr.exe](https://github.com/OUIsolutions/yahr/releases/download/0.0.3/yahr.exe)|Windows binary |
 
 ## Quick Start
 to quick start using , just open your termminal and type (you must be on linux)
