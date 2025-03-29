@@ -21,7 +21,7 @@ and you can just start with:
 ```shell 
 ./yahr.out
 ```
-###  References
+###  Docs
 | File |
 |-------        |
 |[Arg Flags](/docs/argv_flags.md)|
