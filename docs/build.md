@@ -5,7 +5,7 @@ and you will need to understand darwin concepts to manipulate these repo
 ## Building from Amalagamation Release 
 For Building from amalgamation you can just download it with:
 ```shell
-curl -L https://github.com/OUIsolutions/yahr/releases/download/0.0.2/yahr.c -O yahr.c
+curl -L https://github.com/OUIsolutions/yahr/releases/download/0.0.3/yahr.c -O yahr.c
 ```
 and then , you can compile with 
 ```shell 
